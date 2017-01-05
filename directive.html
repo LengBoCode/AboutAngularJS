@@ -1,0 +1,33 @@
+<html>
+<link rel="stylesheet" href="css/bootstrap.css">
+<script type="text/javascript" src="js/Angular.js"></script>
+
+<body>
+	<div ng-app="myApp">
+    <p> <input type="text" ng-model="name" ng-init="hello='Hello';world='World'"></p>
+    <!-- ng-model="name"将input的value保存到name变量中 -->
+    <!-- ng-init="hello='Hello';world='World'"将设置两个变量并初始化值，中间是‘;’隔开 -->
+    <p>{{hello}} <span ng-bind="world"></span> <span>{{name}}</span></p>
+    <!-- ng-bind="world"将world变量的值绑定到span标签上 -->
+    <!-- {{name}}将name变量中的值打印到特定位置 -->
+    <div ng-init="names=[1,3,4,2,8]">
+      <ul>
+        <li ng-repeat="x in names">{{x}}</li>
+        <!-- ng-repeat="x in names"遍历names变量中的值 -->
+      </ul>
+    </div>
+    <mydirective></mydirective>
+  </div>
+</body>
+<script type="text/javascript">
+  var app=angular.module("myApp",[]);
+  app.directive("mydirective",function(){
+   return {
+     restrict:"A",
+     // A限制指令只能属性中使用
+     template: "<p>This is directive from you</p>"
+   };
+ })
+</script>
+
+</html>
